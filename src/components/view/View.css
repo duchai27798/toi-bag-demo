@@ -1,0 +1,23 @@
+.view-container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+}
+
+div[class^='col'] {
+    padding: 0;
+}
+
+.row {
+    margin: 0 !important;
+}
+
+.view-model {
+    height: 800px;
+}
+
+@media screen and (max-width: 576px) {
+    .view-model {
+        height: 80vh;
+    }
+}
