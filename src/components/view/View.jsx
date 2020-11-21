@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import './View.css';
 import ColorSetting from '../ColorSettings/ColorSettings';
 import { useDispatch, useSelector } from 'react-redux';
-import { rootAction } from '../../actions/root.action';
+import modelAction from '../../actions/model.action';
 
 const MODEL_UID = '9b8155fa2a9d45029ec62f20038877ba';
 
@@ -20,11 +20,11 @@ const View = ({ apiRef }) => {
                 success: (api) => {
                     apiRef.current = api;
                     api.addEventListener('viewerready', function () {
-                        dispatch(rootAction.setIsLoaded(true));
+                        dispatch(modelAction.setIsLoaded(true));
                         api.getTextureList(function (err, textures) {
                             if (!err) {
                                 // console.log(textures);
-                                dispatch(rootAction.setTextureList(textures));
+                                dispatch(modelAction.setTextureList(textures));
                             }
                         });
                     });

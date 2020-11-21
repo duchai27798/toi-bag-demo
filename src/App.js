@@ -6,8 +6,8 @@ import { PART_NAME_CONST } from './constants/part-name.constant';
 
 function App() {
     const apiRef = useRef(null);
-    const bagSetting = useSelector((state) => state.bagSetting);
-    const isLoad = useSelector((state) => state.isLoad);
+    const bagSetting = useSelector((state) => state.model.bagSetting);
+    const isLoaded = useSelector((state) => state.model.isLoaded);
 
     const changeColor = (uid, partName) => {
         apiRef.current.getMaterialList((err, materials) => {
@@ -29,15 +29,14 @@ function App() {
     };
 
     useEffect(() => {
-        if (isLoad) {
-            console.log('change');
+        if (isLoaded) {
             bagSetting[PART_NAME_CONST.BODY] && changeColor(bagSetting[PART_NAME_CONST.BODY], PART_NAME_CONST.BODY);
             bagSetting[PART_NAME_CONST.SIDE] && changeColor(bagSetting[PART_NAME_CONST.SIDE], PART_NAME_CONST.SIDE);
             bagSetting[PART_NAME_CONST.HANDLE_AND_STRAP] && changeColor(bagSetting[PART_NAME_CONST.HANDLE_AND_STRAP], PART_NAME_CONST.HANDLE_AND_STRAP);
             bagSetting[PART_NAME_CONST.FLAP] && changeColor(bagSetting[PART_NAME_CONST.FLAP], PART_NAME_CONST.FLAP);
             bagSetting[PART_NAME_CONST.ACCESSORY] && changeColor(bagSetting[PART_NAME_CONST.ACCESSORY], PART_NAME_CONST.ACCESSORY);
         }
-    }, [bagSetting]);
+    }, [bagSetting, isLoaded]);
 
     return (
         <div>

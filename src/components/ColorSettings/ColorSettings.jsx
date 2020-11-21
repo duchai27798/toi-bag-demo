@@ -2,15 +2,15 @@ import React from 'react';
 import './ColorSettings.css';
 import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
-import { rootAction } from '../../actions/root.action';
 import { PART_NAME_CONST } from '../../constants/part-name.constant';
+import modelAction from '../../actions/model.action';
 
 const ColorSetting = () => {
-    const textures = useSelector((state) => state.textures);
+    const textures = useSelector((state) => state.model.textures);
     const dispatch = useDispatch();
 
     const changeStyleForPart = (uid, partName) => {
-        dispatch(rootAction.chooseTextureForPart(uid, partName));
+        dispatch(modelAction.chooseTextureForPart(uid, partName));
     };
 
     const renderItemOptions = (searchWith, partName) => {
