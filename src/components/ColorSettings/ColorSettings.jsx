@@ -20,7 +20,7 @@ const ColorSetting = () => {
             <ul className="mt-3 nav">
                 {_.map(bodyOptions, (item, index) => (
                     <li key={index} className="ml-4" onClick={() => changeStyleForPart(item['uid'], partName)}>
-                        <img src={_.get(item, ['images', 0, 'url'])} className="option-item" />
+                        <img src={_.get(item, ['images', 0, 'url'])} className="option-item"  alt=""/>
                     </li>
                 ))}
             </ul>
@@ -51,6 +51,7 @@ const ColorSetting = () => {
                     {renderItemOptions('accessory', PART_NAME_CONST.ACCESSORY)}
                 </div>
             </div>
+            <button className="btn btn-success mt-3 ml-5">Save Model</button>
         </div>
     );
 };

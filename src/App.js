@@ -3,6 +3,7 @@ import View from './components/view/View';
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { PART_NAME_CONST } from './constants/part-name.constant';
+import Header from './layouts/Header/Header';
 
 function App() {
     const apiRef = useRef(null);
@@ -40,7 +41,10 @@ function App() {
 
     return (
         <div>
-            <View apiRef={apiRef} />
+            <Header />
+            <div className="content-wrapper">
+                <View apiRef={apiRef} />
+            </div>
         </div>
     );
 }

@@ -1,0 +1,7 @@
+.header-container {
+    z-index: 1;
+    background: #ffffff;
+}
+.header {
+    height: 60px;
+}
