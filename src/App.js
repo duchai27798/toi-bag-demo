@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { PART_NAME_CONST } from './constants/part-name.constant';
 import Header from './layouts/Header/Header';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
     const apiRef = useRef(null);
@@ -43,7 +44,12 @@ function App() {
         <div>
             <Header />
             <div className="content-wrapper">
-                <View apiRef={apiRef} />
+                <Switch>
+                    <Route path="/" exact>
+                        <View apiRef={apiRef} />
+                    </Route>
+                    <Route path="/login" render={() => <h1>Login</h1>} />
+                </Switch>
             </div>
         </div>
     );

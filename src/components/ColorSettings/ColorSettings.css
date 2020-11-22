@@ -2,8 +2,19 @@
 }
 
 .option-item {
-    height: 50px;
-    width: 50px;
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
     border: 1px solid #b2bec3;
+}
+
+.option-item-container {
+    padding: 7px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.option-item-container.active {
+    border-color: #631c30;
 }

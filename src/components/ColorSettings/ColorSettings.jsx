@@ -7,6 +7,7 @@ import modelAction from '../../actions/model.action';
 
 const ColorSetting = () => {
     const textures = useSelector((state) => state.model.textures);
+    const bagSetting = useSelector((state) => state.model.bagSetting);
     const dispatch = useDispatch();
 
     const changeStyleForPart = (uid, partName) => {
@@ -19,8 +20,12 @@ const ColorSetting = () => {
         return (
             <ul className="mt-3 nav">
                 {_.map(bodyOptions, (item, index) => (
-                    <li key={index} className="ml-4" onClick={() => changeStyleForPart(item['uid'], partName)}>
-                        <img src={_.get(item, ['images', 0, 'url'])} className="option-item"  alt=""/>
+                    <li
+                        key={index}
+                        className={`ml-4 option-item-container ${bagSetting[partName] === item['uid'] && 'active'}`}
+                        onClick={() => changeStyleForPart(item['uid'], partName)}
+                    >
+                        <img src={_.get(item, ['images', 0, 'url'])} className="option-item" alt="" />
                     </li>
                 ))}
             </ul>
