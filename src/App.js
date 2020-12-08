@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { PART_NAME_CONST } from './constants/part-name.constant';
 import Header from './layouts/Header/Header';
 import { Route, Switch } from 'react-router-dom';
+import ViewThree from './components/ViewThree/ViewThree';
 
 function App() {
     const apiRef = useRef(null);
@@ -48,6 +49,7 @@ function App() {
                     <Route path="/" exact>
                         <View apiRef={apiRef} />
                     </Route>
+                    <Route path="/three-js" component={ViewThree} />
                     <Route path="/login" render={() => <h1>Login</h1>} />
                 </Switch>
             </div>
