@@ -4,11 +4,7 @@ import { Canvas } from 'react-three-fiber';
 
 const ViewThree = () => {
     return (
-        <Canvas style={{ }}>
-            <Suspense fallback={null} >
-                <BagThree />
-            </Suspense>
-        </Canvas>
+        <BagThree />
     )
 }
 
