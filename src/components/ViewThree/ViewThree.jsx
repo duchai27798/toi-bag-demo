@@ -1,6 +1,5 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import BagThree from '../BagThree/BagThree';
-import { Canvas } from 'react-three-fiber';
 
 const ViewThree = () => {
     return (
