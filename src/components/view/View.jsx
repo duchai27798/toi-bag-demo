@@ -23,7 +23,7 @@ const View = ({ apiRef }) => {
                         dispatch(modelAction.setIsLoaded(true));
                         api.getTextureList(function (err, textures) {
                             if (!err) {
-                                // console.log(textures);
+                                console.log(textures);
                                 dispatch(modelAction.setTextureList(textures));
                             }
                         });
