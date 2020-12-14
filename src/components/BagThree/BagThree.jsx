@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import path from '../../assets/FBX/Backpack.fbx';
+import path from '../../assets/FBX/sandy_lowpoly_uv2.FBX';
 import { Canvas, useLoader, useThree } from 'react-three-fiber';
 import { OrbitControls, useFBX } from '@react-three/drei';
 import flapYellowImg from '../../assets/texture/FlapYellow_diffuse-min.jpg';
@@ -39,11 +39,12 @@ const Render3D = ({ textures, setTextures, isChanged }) => {
     });
 
     if (textures && isChanged) {
-        console.log(textures.pink.image.currentSrc);
         fbx.children.forEach((mesh) => {
+            // console.log(texture);
             // if (mesh.name === 'sandy_flap') {
-                mesh.material = new THREE.MeshPhysicalMaterial({
-                    map: textures.yellow,
+            textures.pink.encoding = THREE.sRGBEncoding;
+            mesh.material = new THREE.MeshPhysicalMaterial({
+                    map: textures.pink,
                     // color: 0x7a5450
                 });
             // }
@@ -77,25 +78,26 @@ const BagThree = () => {
             <div className="col-12 col-md-8 bag-three">
                 <Canvas style={{ height, width: '100%' }} colorManagement shadowMap>
                     {/*<fog attach="fog" args={[0xa0a0a0, 10, 500]} />*/}
-                    <ambientLight color={0xCACACA}  intensity={0.2} />
+                    <ambientLight intensity={.5} />
+                    <directionalLight
+                        intensity={0.6}
+                        position={[150, 300, 200]}
+                        shadow-camera-left={-20}
+                        shadow-camera-right={20}
+                        shadow-camera-top={20}
+                        shadow-camera-bottom={-20}
+                        castShadow
+                    />
                     <directionalLight
                         intensity={0.4}
-                        position={[-10, 50, 100]}
-                        shadow-camera-left={-10}
-                        shadow-camera-right={10}
-                        shadow-camera-top={10}
-                        shadow-camera-bottom={-10}
+                        position={[150, 300, -200]}
+                        shadow-camera-left={-20}
+                        shadow-camera-right={20}
+                        shadow-camera-top={20}
+                        shadow-camera-bottom={-20}
                         castShadow
                     />
-                    <directionalLight
-                        intensity={0.5}
-                        position={[-10, 50, -100]}
-                        shadow-camera-left={-10}
-                        shadow-camera-right={10}
-                        shadow-camera-top={10}
-                        shadow-camera-bottom={-10}
-                        castShadow
-                    />
+                    <pointLight position={[10, 10, 10]} />
                     <Controls />
                     <Suspense fallback={null}>
                         <Render3D textures={textures} setTextures={setTextures} isChanged={isChanged} />
